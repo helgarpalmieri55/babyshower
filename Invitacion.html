@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Shower – Rebecca & Micaela</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Lato:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --rose:#e8a0b4;
+  --deeprose:#c4607a;
+  --blush:#fbedf2;
+  --cream:#fdf8f2;
+  --gold:#d4a96a;
+  --goldlight:#f0d9b0;
+  --text:#7a4055;
+  --darktext:#5a2d3e;
+}
+
+body{
+  background:linear-gradient(135deg,#f5e8ef 0%,#ede8f5 50%,#f5e8ef 100%);
+  display:flex;justify-content:center;align-items:flex-start;
+  min-height:100vh;padding:30px 16px 60px;
+  font-family:'Lato',sans-serif;
+}
+
+/* ── CARD ── */
+.card{
+  width:100%;max-width:520px;
+  background:radial-gradient(ellipse at 50% 20%,#fff 0%,#fdf0f5 40%,#f5e8f0 100%);
+  border-radius:6px;
+  box-shadow:0 40px 100px rgba(90,40,60,.2),0 8px 30px rgba(90,40,60,.12);
+  position:relative;overflow:hidden;
+  animation:cardIn 1s cubic-bezier(.2,.8,.3,1) both;
+}
+@keyframes cardIn{from{opacity:0;transform:scale(.95) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+
+/* ── SPARKLES layer ── */
+.sparkles{position:absolute;inset:0;pointer-events:none;z-index:5;}
+.sp{position:absolute;width:5px;height:5px;background:var(--gold);border-radius:50%;animation:spAnim ease-in-out infinite;}
+@keyframes spAnim{
+  0%{opacity:0;transform:scale(0);}
+  50%{opacity:.9;transform:scale(1);}
+  100%{opacity:0;transform:scale(0);}
+}
+/* 4-pointed star shape */
+.sp.star{background:none;color:var(--gold);font-size:12px;width:auto;height:auto;border-radius:0;}
+
+/* ── RIBBON TOP ── */
+.ribbon-top{
+  position:relative;text-align:center;padding-top:28px;z-index:6;
+  animation:fadeDown .8s .2s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-15px);}to{opacity:1;transform:translateY(0);}}
+.ribbon-top .bow{font-size:42px;display:inline-block;animation:sway 3s ease-in-out infinite;filter:drop-shadow(0 3px 6px rgba(200,120,140,.3));}
+@keyframes sway{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
+
+/* ── FLORAL ARCH ── */
+.floral-arch{
+  position:relative;padding:0 10px;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  z-index:4;margin-top:-10px;
+}
+.flowers-left,.flowers-right{
+  display:flex;flex-direction:column;gap:2px;
+  font-size:28px;line-height:1;
+  animation:floralIn 1s .4s ease both;
+}
+.flowers-right{align-items:flex-end;}
+@keyframes floralIn{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
+.flowers-left span,.flowers-right span{
+  display:inline-block;animation:floatFlower ease-in-out infinite;
+  filter:drop-shadow(0 2px 4px rgba(180,80,110,.25));
+}
+@keyframes floatFlower{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-6px) rotate(3deg);}}
+
+/* ── HEADER TEXT ── */
+.header-text{
+  text-align:center;padding:10px 30px 0;position:relative;z-index:6;
+  animation:fadeUp .9s .5s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+.baby-shower-title{
+  font-family:'Great Vibes',cursive;
+  font-size:54px;
+  background:linear-gradient(135deg,var(--gold) 0%,#c47e50 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 2px 4px rgba(180,100,50,.3));
+  line-height:1.1;
+  animation:shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer{
+  0%,100%{filter:drop-shadow(0 2px 4px rgba(180,100,50,.3));}
+  50%{filter:drop-shadow(0 2px 10px rgba(212,169,106,.6));}
+}
+
+.names-title{
+  font-family:'Great Vibes',cursive;
+  font-size:56px;
+  color:var(--deeprose);
+  line-height:1;
+  margin-top:2px;
+  text-shadow:0 2px 8px rgba(196,96,122,.25);
+  animation:fadeUp .9s .6s ease both;
+}
+
+/* pearls / chain decoration */
+.pearl-chain{
+  text-align:center;margin:8px 0 4px;
+  animation:fadeUp .9s .65s ease both;
+}
+.pearl-chain span{
+  font-size:14px;color:var(--goldlight);letter-spacing:4px;
+  animation:pearlGlow 2s ease-in-out infinite;
+}
+@keyframes pearlGlow{0%,100%{opacity:.6;}50%{opacity:1;}}
+
+/* ── POEM ── */
+.poem{
+  text-align:center;padding:14px 36px 10px;
+  font-family:'Playfair Display',serif;font-style:italic;
+  color:var(--text);line-height:1.6;
+  animation:fadeUp .9s .7s ease both;
+}
+.poem .line1{font-size:18px;font-weight:600;color:var(--darktext);}
+.poem .line2{font-size:14px;margin-top:6px;}
+
+/* ── CURTAINS / DIVIDERS ── */
+.curtain-div{
+  text-align:center;margin:6px 0;
+  font-size:22px;letter-spacing:6px;
+  color:rgba(232,160,180,.6);
+  animation:fadeIn 1s .8s ease both;
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ── BABIES ILLUSTRATION ── */
+.babies-wrap{
+  text-align:center;margin:10px 0 6px;
+  animation:babiesIn 1s .75s ease both;
+}
+@keyframes babiesIn{from{opacity:0;transform:scale(.85);}to{opacity:1;transform:scale(1);}}
+.babies-emoji{
+  font-size:70px;display:inline-block;
+  animation:sleepBob 4s ease-in-out infinite;
+  filter:drop-shadow(0 6px 12px rgba(200,100,130,.3));
+}
+@keyframes sleepBob{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-8px) rotate(1deg);}}
+.babies-deco{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:4px;font-size:20px;}
+.babies-deco span{animation:floatFlower ease-in-out infinite;}
+
+/* ── INFO SECTION ── */
+.info-section{
+  background:rgba(255,255,255,.55);
+  border-top:1px solid rgba(232,160,180,.4);
+  border-bottom:1px solid rgba(232,160,180,.4);
+  padding:18px 36px;
+  margin:12px 0;
+  animation:fadeUp .9s .85s ease both;
+}
+.info-row{
+  display:flex;align-items:flex-start;gap:12px;
+  margin-bottom:12px;
+  font-size:14px;color:var(--darktext);
+}
+.info-row:last-child{margin-bottom:0;}
+.info-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.info-content{}
+.info-label{
+  font-size:9px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--rose);display:block;margin-bottom:2px;
+}
+.info-value{
+  font-family:'Playfair Display',serif;font-size:15px;
+  color:var(--darktext);line-height:1.35;
+}
+
+/* ── GIFTS ── */
+.gifts-section{padding:0 36px 10px;animation:fadeUp .9s .9s ease both;}
+.gifts-header{
+  text-align:center;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;justify-content:center;
+}
+.gifts-header::before,.gifts-header::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,transparent,var(--rose),transparent);
+}
+.gifts-header-text{
+  font-family:'Great Vibes',cursive;font-size:28px;color:var(--deeprose);
+  white-space:nowrap;
+}
+
+.gift-row{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 14px;margin-bottom:8px;
+  background:rgba(255,255,255,.6);
+  border:1px solid rgba(232,160,180,.45);
+  border-radius:50px;
+  font-size:13px;color:var(--darktext);
+  transition:transform .2s ease,box-shadow .2s ease;
+  animation:slideIn .5s ease both;
+}
+.gift-row:hover{transform:translateX(4px);box-shadow:0 4px 14px rgba(196,96,122,.15);}
+.gift-row:nth-child(1){animation-delay:.95s;}
+.gift-row:nth-child(2){animation-delay:1.0s;}
+.gift-row:nth-child(3){animation-delay:1.05s;}
+.gift-row:nth-child(4){animation-delay:1.1s;}
+@keyframes slideIn{from{opacity:0;transform:translateX(-16px);}to{opacity:1;transform:translateX(0);}}
+.gift-heart{color:var(--rose);font-size:14px;flex-shrink:0;}
+.gift-text{font-family:'Playfair Display',serif;font-style:italic;}
+
+/* ── CUPO ── */
+.cupo-section{
+  margin:14px 24px 20px;
+  background:linear-gradient(135deg,rgba(232,160,180,.35) 0%,rgba(212,169,106,.25) 100%);
+  border:1.5px solid var(--rose);
+  border-radius:4px;
+  padding:18px 20px;text-align:center;
+  animation:fadeUp .9s 1.1s ease both;
+  position:relative;overflow:hidden;
+}
+.cupo-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.6) 0%,transparent 70%);
+}
+.cupo-label{
+  font-size:9px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--mauve,#b07090);display:block;margin-bottom:6px;position:relative;
+}
+.cupo-value{
+  font-family:'Great Vibes',cursive;font-size:46px;
+  background:linear-gradient(135deg,var(--gold) 0%,#c47e50 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  position:relative;
+}
+.cupo-sub{font-size:11px;color:var(--text);font-style:italic;margin-top:3px;position:relative;}
+
+/* ── FOOTER ── */
+/* ── RSVP ── */
+.rsvp-section{
+  margin:4px 24px 16px;
+  text-align:center;
+  animation:fadeUp .9s 1.15s ease both;
+}
+.rsvp-label{
+  font-size:9px;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--text);display:block;margin-bottom:12px;
+}
+.rsvp-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Playfair Display',serif;font-style:italic;font-size:15px;
+  color:#fff;text-decoration:none;
+  background:linear-gradient(135deg,var(--deeprose) 0%,#e07090 50%,var(--deeprose) 100%);
+  background-size:200% 100%;
+  padding:13px 32px;border-radius:100px;
+  box-shadow:0 6px 20px rgba(196,96,122,.4);
+  transition:transform .25s ease,box-shadow .25s ease;
+  animation:btnShimmer 3s ease-in-out infinite;
+}
+@keyframes btnShimmer{
+  0%,100%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+}
+.rsvp-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 28px rgba(196,96,122,.5);}
+.rsvp-btn-icon{font-size:18px;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.25);}}
+.rsvp-note{font-size:11px;color:var(--text);margin-top:9px;font-style:italic;opacity:.7;}
+
+/* ── FOOTER ── */
+.footer-flowers{
+  display:flex;justify-content:center;gap:8px;
+  font-size:22px;padding:0 20px 8px;
+  animation:fadeIn 1s 1.2s ease both;
+}
+.footer-flowers span{animation:floatFlower ease-in-out infinite;}
+.footer-text{
+  text-align:center;padding:12px 30px 28px;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:14px;color:var(--text);
+  border-top:1px solid rgba(232,160,180,.3);
+  animation:fadeIn 1s 1.25s ease both;
+}
+
+/* ── FLOATING GOLD STARS ── */
+.float-star{
+  position:absolute;pointer-events:none;z-index:5;
+  color:var(--gold);font-size:14px;
+  animation:starFloat ease-in-out infinite, starFade ease-in-out infinite;
+}
+@keyframes starFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-18px) rotate(20deg);}}
+@keyframes starFade{0%,100%{opacity:.2;}50%{opacity:.8;}}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- Floating gold stars -->
+  <span class="float-star" style="left:8%;top:18%;animation-duration:5s,5s;animation-delay:.2s,.2s;">✦</span>
+  <span class="float-star" style="right:9%;top:14%;animation-duration:6s,6s;animation-delay:1s,1s;">✧</span>
+  <span class="float-star" style="left:5%;top:55%;animation-duration:7s,7s;animation-delay:.5s,.5s;">✦</span>
+  <span class="float-star" style="right:6%;top:50%;animation-duration:5.5s,5.5s;animation-delay:1.5s,1.5s;">✦</span>
+  <span class="float-star" style="left:12%;top:80%;animation-duration:6.5s,6.5s;animation-delay:.8s,.8s;">✧</span>
+  <span class="float-star" style="right:10%;top:78%;animation-duration:4.5s,4.5s;animation-delay:.3s,.3s;">✦</span>
+  <span class="float-star" style="left:50%;top:6%;animation-duration:5s,5s;animation-delay:2s,2s;font-size:10px;">✧</span>
+  <span class="float-star" style="left:30%;top:3%;animation-duration:6s,6s;animation-delay:1.2s,1.2s;font-size:8px;">✦</span>
+  <span class="float-star" style="right:25%;top:4%;animation-duration:7s,7s;animation-delay:.6s,.6s;font-size:9px;">✧</span>
+
+  <!-- Ribbon / Bow top -->
+  <div class="ribbon-top">
+    <span class="bow">🎀</span>
+  </div>
+
+  <!-- Floral arch -->
+  <div class="floral-arch">
+    <div class="flowers-left">
+      <span style="animation-duration:5s;animation-delay:0s;">🌸</span>
+      <span style="animation-duration:6s;animation-delay:.5s;font-size:22px;">🌷</span>
+      <span style="animation-duration:7s;animation-delay:1s;font-size:20px;">🐰</span>
+      <span style="animation-duration:5.5s;animation-delay:.3s;font-size:18px;">🌹</span>
+    </div>
+
+    <!-- Header text center -->
+    <div style="flex:1;" class="header-text">
+      <div class="baby-shower-title">Baby Shower</div>
+      <div class="names-title">Rebecca &amp; Micaela</div>
+      <div class="pearl-chain"><span>· · · ♥ · · ·</span></div>
+    </div>
+
+    <div class="flowers-right">
+      <span style="animation-duration:6s;animation-delay:.2s;">🌸</span>
+      <span style="animation-duration:5s;animation-delay:.7s;font-size:22px;">🌷</span>
+      <span style="animation-duration:7s;animation-delay:1.2s;font-size:20px;">🐰</span>
+      <span style="animation-duration:6s;animation-delay:.4s;font-size:18px;">🌹</span>
+    </div>
+  </div>
+
+  <!-- Poem -->
+  <div class="poem">
+    <div class="line1">✦ Hay sueños que se cumplen por partida doble. ✦</div>
+    <div class="line2">Te esperamos para celebrar la llegada de<br>nuestras princesas en una tarde inolvidable.</div>
+  </div>
+
+  <div class="curtain-div">❧ ❧ ❧</div>
+
+  <!-- Babies illustration -->
+  <div class="babies-wrap">
+    <div class="babies-emoji">👶🏻👶🏻</div>
+    <div class="babies-deco">
+      <span style="animation-duration:4.5s;">🌸</span>
+      <span style="animation-duration:5s;animation-delay:.3s;">🍼</span>
+      <span style="animation-duration:4s;animation-delay:.6s;">💕</span>
+      <span style="animation-duration:5.5s;animation-delay:.2s;">🍼</span>
+      <span style="animation-duration:4.5s;animation-delay:.8s;">🌸</span>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="info-section">
+    <div class="info-row">
+      <span class="info-icon">📍</span>
+      <div class="info-content">
+        <span class="info-label">Lugar</span>
+        <span class="info-value">Combarranquilla Sede Country<br>Salón de Cristal</span>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">📅</span>
+      <div class="info-content">
+        <span class="info-label">Fecha</span>
+        <span class="info-value">Sábado, 15 de Marzo de 2025</span>
+      </div>
+    </div>
+    <div class="info-row">
+      <span class="info-icon">⏰</span>
+      <div class="info-content">
+        <span class="info-label">Hora</span>
+        <span class="info-value">4:00 PM a 7:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gifts -->
+  <div class="gifts-section">
+    <div class="gifts-header">
+      <span class="gifts-header-text">💕 Lista de Regalos 💕</span>
+    </div>
+    <div class="gift-row"><span class="gift-heart">♡</span><span class="gift-text">Pañitos húmedos Winnie recién nacido</span></div>
+    <div class="gift-row"><span class="gift-heart">♡</span><span class="gift-text">Pañales Winnie o Pampers etapa 0–1</span></div>
+    <div class="gift-row"><span class="gift-heart">♡</span><span class="gift-text">Bodies 0–3 / 3–6 meses (colores neutros)</span></div>
+    <div class="gift-row"><span class="gift-heart">♡</span><span class="gift-text">Pijamas de corredera</span></div>
+  </div>
+
+  <!-- Cupo -->
+  <div class="cupo-section">
+    <span class="cupo-label">✦ Valor del cupo por persona ✦</span>
+    <div class="cupo-value">$40.000 COP</div>
+    <p class="cupo-sub">Incluye celebración, decoración y merienda 🎀</p>
+  </div>
+
+  <!-- Footer flowers -->
+  <div class="footer-flowers">
+    <span style="animation-duration:5s;animation-delay:0s;">🌸</span>
+    <span style="animation-duration:6s;animation-delay:.4s;">🌷</span>
+    <span style="animation-duration:4.5s;animation-delay:.8s;">💮</span>
+    <span style="animation-duration:5.5s;animation-delay:.2s;">🌷</span>
+    <span style="animation-duration:6s;animation-delay:.6s;">🌸</span>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp-section">
+    <span class="rsvp-label">✦ Confirma tu asistencia ✦</span>
+    <a class="rsvp-btn" href="https://forms.office.com/r/3WE5gibeyY" target="_blank">
+      <span class="rsvp-btn-icon">💌</span> Confirmar Asistencia
+    </a>
+    <p class="rsvp-note">Haz clic para llenar el formulario</p>
+  </div>
+
+  <!-- Footer text -->
+  <div class="footer-text">
+    ¡Con mucho amor, los esperamos! 💕<br>
+    <span style="font-size:11px;font-style:normal;letter-spacing:.12em;color:#b07090;">REBECCA &amp; MICAELA · MARZO 2025</span>
+  </div>
+
+</div>
+</body>
+</html>
